@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gift For You 💝</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff5f8);
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .page { display: none; padding: 60px 20px; }
+    .active { display: block; animation: fade 0.6s ease; }
+    @keyframes fade { from {opacity:0; transform: translateY(10px);} to {opacity:1;} }h1 {
+  font-family: 'Pacifico', cursive;
+  color: #ff5c8a;
+  font-size: 36px;
+}
+p { color: #555; }
+
+button {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  margin: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff8fab, #ff5c8a);
+  color: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+button:hover { transform: scale(1.05); }
+
+.kitty { font-size: 90px; animation: float 2s infinite ease-in-out; }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+.gifts {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.gift {
+  font-size: 80px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.gift:hover { transform: scale(1.2) rotate(5deg); }
+
+.card {
+  max-width: 750px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+textarea {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+}
+
+.hearts::before {
+  content: "💗 💕 💖 💘 💞";
+  display: block;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+  </style>
+</head>
+<body><!-- PAGE 1 --><div class="page active" id="page1">
+  <img class="kitty" src="https://i.imgur.com/7QZ7ZQp.png" alt="cute kitty">
+  <h1>I have a gift for you</h1>
+  <p>Will you accept it? 💗</p>
+  <button onclick="goYes()">YES</button>
+  <button onclick="goNo()">NO</button>
+</div><!-- NO PAGE --><div class="page" id="noPage">
+  <img class="kitty" src="https://i.imgur.com/1q9ZQyZ.png" alt="angry kitty">
+  <h1>HOW DARE YOU</h1>
+  <p>You have no choice 😤</p>
+  <button onclick="backHome()">TRY AGAIN</button>
+</div><!-- GIFTS PAGE --><div class="page" id="giftsPage">
+  <h1>Gift for you 🎁</h1>
+  <p>Click any gift to open</p>
+  <div class="gifts">
+    <img class="gift" src="https://i.imgur.com/8nKQp4E.png" onclick="openGift('letterPage')" alt="gift box">
+    <img class="gift" src="https://i.imgur.com/8nKQp4E.png" onclick="openGift('magPage')" alt="gift box">
+    <img class="gift" src="https://i.imgur.com/8nKQp4E.png" onclick="openGift('namesPage')" alt="gift box">
+  </div>
+</div><!-- LETTER --><div class="page" id="letterPage">
+  <h1>My letter to you 💌</h1>
+  <div class="card hearts">
+    <textarea>
+If I could give you one gift, it would be the ability to see yourself through my eyes...
+    </textarea>
+  </div>
+  <button onclick="openGift('giftsPage')">Back</button>
+</div><!-- MAGAZINE --><div class="page" id="magPage">
+  <h1>My magazine for you 📖</h1>
+  <div class="card hearts">
+    <textarea>
+This is your special scrapbook.
+Write memories, paste image links, or love notes.
+You can change this anytime 💕
+    </textarea>
+  </div>
+  <button onclick="openGift('giftsPage')">Back</button>
+</div><!-- NAMES --><div class="page" id="namesPage">
+  <h1>Things I love about you 🧸</h1>
+  <div class="card hearts">
+    <textarea>
+Your smile
+Your warm hugs
+The cute names I call you
+Your goofy side
+    </textarea>
+  </div>
+  <button onclick="openGift('giftsPage')">Back</button>
+</div><script>
+  function show(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  function goYes() { show('giftsPage'); }
+  function goNo() { show('noPage'); }
+  function backHome() { show('page1'); }
+  function openGift(id) { show(id); }
+</script></body>
+</html>
